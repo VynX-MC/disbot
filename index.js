@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.CLIENT_ID;
 const mongoUri = process.env.MONGO_URI; // La nouvelle variable d'environnement
-const GAME_CHANNEL_ID = 'ID_DE_VOTRE_SALON_DE_JEU'; // Mettez l'ID de votre salon
+const GAME_CHANNEL_ID = '1430685218351878154'; // Mettez l'ID de votre salon
 
 if (!token || !clientId || !GAME_CHANNEL_ID || !mongoUri) {
   console.error("Erreur : Des variables d'environnement sont manquantes ! (TOKEN, CLIENT_ID, GAME_CHANNEL_ID, MONGO_URI)");
