@@ -1,0 +1,16 @@
+{
+  "name": "vybot",
+  "version": "1.0.0",
+  "description": "Mon bot Discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vynx_mc",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.23.2",
+    "express": "^4.21.2"
+  }
+}
