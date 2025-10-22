@@ -1,17 +1,14 @@
 {
-  "name": "mon-bot-render",
+  "name": "mon-bot-render-mongo",
   "version": "1.0.0",
-  "description": "Mon bot Discord hébergé sur Render",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Votre Nom",
-  "license": "ISC",
   "dependencies": {
     "discord.js": "^14.15.3",
     "express": "^4.19.2",
-    "better-sqlite3": "^11.1.2",
+    "mongoose": "^8.4.1",
     "node-cron": "^3.0.3"
   }
 }
