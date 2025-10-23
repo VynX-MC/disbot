@@ -486,6 +486,59 @@ cron.schedule('0 */2 * * *', async () => {
   timezone: "Europe/Paris"
 });
 
+// Importez la fonction clé
+import { joinVoiceChannel } from '@discordjs/voice';
+import { Interaction, ChannelType } from 'discord.js';
+
+// ...
+
+client.on('interactionCreate', async (interaction: Interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === 'join-channel') {
+    
+    const channelId = interaction.options.getString('channel_id');
+    if (!interaction.guildId) { /* ... */ }
+
+    // 3. Récupérer l'objet Channel à partir de l'ID
+    let voiceChannel;
+    try {
+        voiceChannel = await client.channels.fetch(channelId);
+    } catch (error) {
+        return interaction.reply({ content: "Je n'ai pas pu trouver ce salon.", ephemeral: true });
+    }
+
+    // 4. Vérifier si c'est bien un salon vocal
+    if (voiceChannel.type !== ChannelType.GuildVoice) {
+         return interaction.reply({ content: "Ce n'est pas un salon vocal !", ephemeral: true });
+    }
+
+    // 5. Vérifier la permission MINIMALE (Se connecter)
+    const permissions = voiceChannel.permissionsFor(client.user);
+    
+    // 👇 NOUS VÉRIFIONS UNIQUEMENT 'CONNECT' 👇
+    if (!permissions.has('CONNECT')) {
+      return interaction.reply({ content: "J'ai besoin de la permission 'Se connecter' pour rejoindre ce salon !", ephemeral: true });
+    }
+    // La vérification de 'SPEAK' a été retirée.
+
+    // 6. Tenter la connexion
+    try {
+      const connection = joinVoiceChannel({
+        channelId: voiceChannel.id,
+        guildId: voiceChannel.guildId,
+        adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+      });
+
+      await interaction.reply({ content: `Connecté (en mode silencieux) à : **${voiceChannel.name}** !`, ephemeral: true });
+
+    } catch (error) {
+      console.error(error);
+      await interaction.reply({ content: 'Une erreur est survenue lors de la connexion.', ephemeral: true });
+    }
+  }
+});
+
 
 // --- Connexion ---
 // (Identique)
