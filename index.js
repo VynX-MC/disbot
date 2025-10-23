@@ -416,7 +416,6 @@ client.on(Events.MessageCreate, async message => {
     const replyMsg = await message.channel.send(
       `Bravo ${message.author.username} ! C'était la bonne réponse.\nVous êtes **${place}** et gagnez **${pointsGagnes} points** !`
     );
-    setTimeout(() => replyMsg.delete().catch(console.error), 5000);
 
     if (state.responders.length >= 3) {
       state.currentQuestion = "La question a été répondue. Prochaine question dans 2h.";
