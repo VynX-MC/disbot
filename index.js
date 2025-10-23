@@ -1,4 +1,3 @@
-// --- Importation des modules ---
 const { 
   Client, Collection, Events, GatewayIntentBits, 
   REST, Routes, EmbedBuilder, SlashCommandBuilder 
@@ -7,26 +6,20 @@ const express = require('express');
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const path = require('node:path'); // NOUVEAU: Ajout de 'path' pour la robustesse
+const path = require('node:path'); 
 
-// --- Configuration des Secrets ---
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.CLIENT_ID;
 const mongoUri = process.env.MONGO_URI; 
-const GAME_CHANNEL_ID = '1430685218351878154'; // ❗❗ REMPLACEZ CECI ❗❗
+const GAME_CHANNEL_ID = '1430685218351878154';
 
-// --- NOUVEAU: Configuration de la difficulté ---
-const CHANCE_DE_QUESTION_DIFFICILE = 0.3; // 30% de chance
+const CHANCE_DE_QUESTION_DIFFICILE = 0.3;
 
 if (!token || !clientId || !GAME_CHANNEL_ID || !mongoUri) {
   console.error("Erreur : Des variables d'environnement sont manquantes !");
   process.exit(1);
 }
 
-// =================================================================
-// 0. DÉFINITION DU JEU (Équilibrage)
-// =================================================================
-// (Identique)
 const GAME_DATA = {
   items: {
     'pioche_en_bois': { name: 'Pioche en Bois', price: 10 }, 'pioche_en_pierre': { name: 'Pioche en Pierre', price: 30 }, 'epee_en_pierre': { name: 'Épée en Pierre', price: 25 }, 'lit': { name: 'Lit', price: 15 }, 'oeil_ender': { name: 'Oeil de l\'Ender', price: 100 }, 'bois': { name: 'Bois', price: 0 }, 'pierre': { name: 'Pierre', price: 0 }, 'fer': { name: 'Fer', price: 0 }, 'diamant': { name: 'Diamant', price: 0 }, 'four': { name: 'Four', price: 0 }, 'pioche_en_fer': { name: 'Pioche en Fer', price: 0 }, 'epee_en_diamant': { name: 'Épée en Diamant', price: 0 },
@@ -39,19 +32,6 @@ const GAME_DATA = {
   }
 };
 
-// =================================================================
-// 1. PARTIE EXPRESS (Pour Uptime Robot)
-// =================================================================
-// (Identique)
-const app = express();
-const port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Le bot est en ligne ! 🤖'));
-app.listen(port, () => console.log(`[Express] Serveur web démarré sur le port ${port}`));
-
-// =================================================================
-// 2. PARTIE BASE DE DONNÉES (MongoDB Atlas avec Mongoose)
-// =================================================================
-// (Identique)
 const playerSchema = new mongoose.Schema({
   userId: { type: String, required: true, unique: true },
   userName: { type: String, required: true },
@@ -84,8 +64,6 @@ mongoose.connect(mongoUri)
     process.exit(1);
   });
 
-// --- Fonctions de gestion (asynchrones) ---
-// (Identique)
 async function getPlayer(userId, userName) {
   let player = await Player.findOne({ userId: userId });
   if (!player) {
@@ -105,17 +83,11 @@ async function addPoints(userId, userName, amount) {
   );
 }
 
-// =================================================================
-// 3. PARTIE BOT DISCORD (Commandes + Logique de jeu)
-// =================================================================
-
-// --- MODIFIÉ : Chargement et tri des questions ---
 let easyQuestions = [];
 let hardQuestions = [];
 try {
   const data = fs.readFileSync(path.join(__dirname, 'questions.json'), 'utf8');
   const allQuestions = JSON.parse(data);
-  // Sépare les questions dans leurs listes respectives
   easyQuestions = allQuestions.filter(q => q.difficulty === 'easy');
   hardQuestions = allQuestions.filter(q => q.difficulty === 'hard');
   
@@ -124,18 +96,13 @@ try {
 
 } catch (err) {
   console.error("[Questions] Erreur: Impossible de lire 'questions.json'.", err);
-  // Ajoute une question de secours pour éviter que le bot ne plante
   easyQuestions.push({ q: "Question de secours : Quel mob explose ?", a: ["creeper"], difficulty: "easy" });
 }
-// --------------------------------------------------
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
 const commands = []; 
 
-// --- Commandes /ping, /classement, /question, /inventaire, /boutique, /acheter, /craft, /action ---
-// (Aucun changement dans cette section, tout est identique à avant)
-// --- Commande /ping ---
 commands.push(new SlashCommandBuilder().setName('ping').setDescription('Vérifie la latence du bot.').toJSON());
 client.commands.set('ping', {
   async execute(interaction) {
@@ -143,7 +110,6 @@ client.commands.set('ping', {
     interaction.editReply(`Pong! 🏓 Latence : ${sent.createdTimestamp - interaction.createdTimestamp}ms`);
   }
 });
-// --- Commande /classement ---
 commands.push(new SlashCommandBuilder().setName('classement').setDescription('Affiche les 10 meilleurs joueurs.').toJSON());
 client.commands.set('classement', {
   async execute(interaction) {
@@ -158,7 +124,7 @@ client.commands.set('classement', {
     await interaction.reply({ embeds: [embed] });
   }
 });
-// --- Commande /question ---
+
 commands.push(new SlashCommandBuilder().setName('question').setDescription('Affiche la question active.').toJSON());
 client.commands.set('question', {
   async execute(interaction) {
@@ -166,7 +132,7 @@ client.commands.set('question', {
     await interaction.reply(`**Question actuelle (${state.currentDifficulty}) :**\n${state.currentQuestion}`);
   }
 });
-// --- Commande /inventaire ---
+
 commands.push(new SlashCommandBuilder().setName('inventaire').setDescription('Affiche vos points et votre inventaire.').toJSON());
 client.commands.set('inventaire', {
   async execute(interaction) {
@@ -193,7 +159,7 @@ client.commands.set('inventaire', {
     await interaction.reply({ embeds: [embed] });
   }
 });
-// --- Commande /boutique ---
+
 commands.push(new SlashCommandBuilder().setName('boutique').setDescription('Affiche les items achetables avec des points.').toJSON());
 client.commands.set('boutique', {
   async execute(interaction) {
@@ -209,7 +175,7 @@ client.commands.set('boutique', {
     await interaction.reply({ embeds: [embed] });
   }
 });
-// --- Commande /acheter ---
+
 commands.push(new SlashCommandBuilder().setName('acheter')
   .setDescription('Acheter un item de la boutique.')
   .addStringOption(option => 
@@ -236,7 +202,7 @@ client.commands.set('acheter', {
     await interaction.reply(`Vous avez acheté **1x ${item.name}** pour ${item.price} points !`);
   }
 });
-// --- Commande /craft ---
+
 commands.push(new SlashCommandBuilder().setName('craft')
   .setDescription('Crafter un item à partir de ressources.')
   .addStringOption(option => 
@@ -273,7 +239,7 @@ client.commands.set('craft', {
     await interaction.reply(`🎉 Vous avez crafté **1x ${recipe.name}** !`);
   }
 });
-// --- Commande /action ---
+
 commands.push(new SlashCommandBuilder().setName('action')
   .setDescription('Effectuer une action (miner, combattre...).')
   .addStringOption(option => 
@@ -339,15 +305,7 @@ client.commands.set('action', {
     await interaction.reply(rewardsString);
   }
 });
-// (Fin de la section des commandes)
 
-
-// =================================================================
-// 4. PARTIE GESTIONNAIRES & CRON
-// =================================================================
-
-// --- Enregistrement des commandes (/) ---
-// (Identique)
 const rest = new REST({ version: '10' }).setToken(token);
 (async () => {
   try {
@@ -362,8 +320,7 @@ const rest = new REST({ version: '10' }).setToken(token);
   }
 })();
 
-// --- Gestionnaire d'interactions (pour les slash commands) ---
-// (Identique)
+
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
   const command = client.commands.get(interaction.commandName); 
@@ -376,8 +333,7 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
-// --- Gestionnaire de Messages (Points de difficulté & Suppression) ---
-// (Identique)
+
 client.on(Events.MessageCreate, async message => {
   if (message.author.bot || message.channel.id !== GAME_CHANNEL_ID) return;
 
@@ -429,32 +385,25 @@ client.on(Events.MessageCreate, async message => {
 });
 
 
-// --- MODIFIÉ : Tâches Planifiées (Aléatoire pondéré) ---
-// '0 */2 * * *' = toutes les 2 heures
 cron.schedule('0 */2 * * *', async () => {
   console.log('[Cron] Lancement de la tâche de nouvelle question.');
   try {
     let newQuestion;
-    const randomRoll = Math.random(); // Un nombre entre 0 et 1
+    const randomRoll = Math.random(); 
     
-    // 1. Décider de la difficulté
     if (randomRoll <= CHANCE_DE_QUESTION_DIFFICILE && hardQuestions.length > 0) {
-      // 30% de chance ET il y a des questions difficiles
       newQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
       console.log("[Cron] Question difficile choisie.");
     } else {
-      // 70% de chance OU il n'y a pas de questions difficiles
       newQuestion = easyQuestions[Math.floor(Math.random() * easyQuestions.length)];
       console.log("[Cron] Question facile choisie.");
     }
     
-    // S'assure qu'on a bien une question (au cas où les listes seraient vides)
     if (!newQuestion) {
       console.error("[Cron] Aucune question disponible ! Vérifiez questions.json.");
       return;
     }
 
-    // 2. Mettre à jour l'état du jeu dans la DB
     await GameState.updateOne(
       { key: 'global' },
       { 
@@ -465,7 +414,6 @@ cron.schedule('0 */2 * * *', async () => {
       }
     );
 
-    // 3. Envoyer la question dans le salon
     const channel = client.channels.cache.get(GAME_CHANNEL_ID);
     if (channel) {
       const isHard = newQuestion.difficulty === 'hard';
@@ -486,9 +434,6 @@ cron.schedule('0 */2 * * *', async () => {
   timezone: "Europe/Paris"
 });
 
-
-// --- Connexion ---
-// (Identique)
 client.once(Events.ClientReady, c => {
   console.log(`[Discord] Prêt ! Connecté en tant que ${c.user.tag}`);
 });
