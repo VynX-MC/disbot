@@ -13,7 +13,7 @@ const path = require('node:path'); // NOUVEAU: Ajout de 'path' pour la robustess
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.CLIENT_ID;
 const mongoUri = process.env.MONGO_URI; 
-const GAME_CHANNEL_ID = 'ID_DE_VOTRE_SALON_DE_JEU'; // ❗❗ REMPLACEZ CECI ❗❗
+const GAME_CHANNEL_ID = '1430685218351878154'; // ❗❗ REMPLACEZ CECI ❗❗
 
 // --- NOUVEAU: Configuration de la difficulté ---
 const CHANCE_DE_QUESTION_DIFFICILE = 0.3; // 30% de chance
