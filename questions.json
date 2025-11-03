@@ -100,5 +100,295 @@
   { "q": "Que faut-il porter pour que les Piglins ne vous attaquent pas ?", "a": ["de l'or", "une pièce d'armure en or"], "difficulty": "easy" },
   { "q": "Quel est le nom du bois bleu dans le Nether ?", "a": ["bois biscornu", "warped wood"], "difficulty": "easy" },
   { "q": "Quel est le nom du bois rouge dans le Nether ?", "a": ["bois carmin", "crimson wood"], "difficulty": "easy" },
-  { "q": "Quel mob géant chevauche un poulet dans le Nether ?", "a": ["piglin zombifié bébé"], "difficulty": "hard" }
+  { "q": "Quel mob géant chevauche un poulet dans le Nether ?", "a": ["piglin zombifié bébé"], "difficulty": "hard" }  ,
+  {
+    "q": "Quel bloc est utilisé pour créer un portail vers le Nether ?",
+    "a": ["obsidienne", "blocs d'obsidienne"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Comment fabrique-t-on un gâteau dans Minecraft ?",
+    "a": ["trois laits deux sucres trois blés un oeuf", "3 laits 2 sucres 3 blés 1 oeuf"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel enchantement empêche les objets de disparaître après la mort ?",
+    "a": ["garde les objets", "conservation", "garder l'inventaire", "mending"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quelle créature lâche des perles de l'Ender ?",
+    "a": ["enderman"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le bloc le plus résistant à l'explosion dans le jeu (hors bedrock et barrière) ?",
+    "a": ["bloc de commande"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quelle est la couleur du champignon géant que l'on trouve dans les biomes de champignons ?",
+    "a": ["rouge"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Combien de fer faut-il pour créer une armure complète en fer ?",
+    "a": ["24", "24 lingots"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel outil est le plus efficace pour miner de la terre ou du sable ?",
+    "a": ["pelle"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'entité qui se déplace dans les end cities et attaque le joueur ?",
+    "a": ["shulker"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Comment fabrique-t-on un bloc de fer ?",
+    "a": ["9 lingots de fer", "neuf lingots de fer"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel monstre explose et peut détruire des blocs ?",
+    "a": ["creeper"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel minerai est nécessaire pour fabriquer une pioche en diamant ?",
+    "a": ["diamant", "blocs de diamant"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel liquide peut être trouvé dans le Nether, mais pas dans le monde normal ?",
+    "a": ["lave"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'enchantement qui augmente la quantité de butin des monstres ?",
+    "a": ["butin"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc permet de faire pousser plus rapidement certains champignons géants ?",
+    "a": ["mycélium"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quelle potion permet de voir dans l'obscurité ?",
+    "a": ["potion de vision nocturne", "vision nocturne"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel monstre peut se téléporter ?",
+    "a": ["enderman"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc est souvent utilisé pour la construction et s'obtient en cuisant de la pierre ?",
+    "a": ["pierre taillée", "pierre lisse"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel enchantement réduit les dégâts de chute ?",
+    "a": ["chute amortie"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le bloc le plus couramment miné pour obtenir du charbon ?",
+    "a": ["minerai de charbon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Combien de cœurs possède un joueur sans armure et sans effets de statut ?",
+    "a": ["10", "dix", "20 hp", "20 points de vie"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel objet est nécessaire pour créer un livre enchanté ?",
+    "a": ["livre"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc est produit lorsque la lave et l'eau se rencontrent sous terre ?",
+    "a": ["cobblestone", "pierre", "pierre brute"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom du minerai qui brille dans le noir sans torche ?",
+    "a": ["minerai de redstone"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quelle couleur de lits peut être utilisée pour réinitialiser le point d'apparition dans le Nether (avec des conséquences explosives) ?",
+    "a": ["toutes les couleurs", "n'importe quelle couleur", "lit"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel est l'objectif principal du jeu en mode Survie ?",
+    "a": ["tuer l'ender dragon", "vaincre l'ender dragon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel outil est le plus efficace pour casser du verre ?",
+    "a": ["n'importe quel outil", "à la main"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel monstre lâche des yeux d'araignée ?",
+    "a": ["araignée", "araignée de cave"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc peut faire fondre des minerais sans l'aide d'un combustible, dans une certaine dimension ?",
+    "a": ["four de l'end"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Comment s'appelle le biome où l'on trouve des champignons géants ?",
+    "a": ["champignonnière", "biome champignon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'item utilisé pour faire voler les feux d'artifice plus loin ?",
+    "a": ["poudre à canon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom du boss du Nether ?",
+    "a": ["wither"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel bloc de terre est recouvert de neige en altitude ?",
+    "a": ["bloc d'herbe", "bloc de terre"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Combien de planches de bois faut-il pour faire un établi ?",
+    "a": ["4", "quatre"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel ingrédient est essentiel pour fabriquer une potion de force ?",
+    "a": ["poudre de blaze"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel mob est passif le jour mais agressif la nuit ?",
+    "a": ["zombie", "squelette", "araignée"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'outil pour cultiver la terre ?",
+    "a": ["houe"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quelle est la couleur du colorant obtenu à partir d'une rose ?",
+    "a": ["rouge"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc sert de source de lumière naturelle dans les profondeurs ?",
+    "a": ["glowstone"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Comment appelle-t-on le minerai bleu-vert qui permet de fabriquer des armures et outils avancés ?",
+    "a": ["diamant"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc génère des créatures si l'environnement est sombre ?",
+    "a": ["spawner", "générateur de monstres"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel outil est le plus rapide pour casser du bois ?",
+    "a": ["hache"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel type de bloc ne peut être cassé qu'avec une pioche en diamant, ou mieux ?",
+    "a": ["obsidienne"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel enchantement permet de pêcher plus de trésors ?",
+    "a": ["chance de la mer"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'objet qui permet de stocker des items et qui peut être lié à un autre ?",
+    "a": ["coffre de l'ender"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quelle est la nourriture préférée des cochons ?",
+    "a": ["carotte"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom du monstre volant et cracheur de boules de feu dans le Nether ?",
+    "a": ["ghast"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc est utilisé pour créer des bibliothèques ?",
+    "a": ["planche de bois", "bois", "planche"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel animal peut être monté et contrôlé avec une carotte au bout d'un bâton ?",
+    "a": ["cochon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom du bloc utilisé pour faire des potions ?",
+    "a": ["alambic", "support de brassage"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est l'ingrédient principal pour fabriquer une potion de rapidité ?",
+    "a": ["sucre"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel bloc sert de combustible et peut aussi être utilisé pour la construction ?",
+    "a": ["charbon", "bloc de charbon"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'outil qui permet de dupliquer les cultures plantées ?",
+    "a": ["ciseaux"],
+    "difficulty": "hard"
+  },
+  {
+    "q": "Quel est le nom du bloc qui absorbe l'eau et se trouve dans les temples sous-marins ?",
+    "a": ["éponge"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Combien de lits faut-il pour créer une chambre complète ?",
+    "a": ["un", "1"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quelle créature volante lâche des membranes de phantom ?",
+    "a": ["phantom"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel objet est utilisé pour mettre des enchantements sur les outils et armures ?",
+    "a": ["table d'enchantement"],
+    "difficulty": "easy"
+  },
+  {
+    "q": "Quel est le nom de l'enchantement qui permet de miner de la glace sans la casser en eau ?",
+    "a": ["toucher de soie", "silk touch"],
+    "difficulty": "hard"
+  }
 ]
